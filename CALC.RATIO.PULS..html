@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATRICE DE RATIO</title>
+    <style>
+        body {
+            background-color: #001F3F;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #calculator {
+            background-color: #003366;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 16px;
+            margin-top: 0;
+            color: #77B2FF; /* Light blue color */
+        }
+
+        input {
+            width: 80%;
+            padding: 8px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #004080;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #00509E;
+        }
+
+        #result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 10px;
+            border: 2px solid #004080;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <h1>CALCULATRICE DE RATIO</h1>
+        <h2>Pour calibration de pulseurs</h2>
+
+        <label for="initial_ratio">Ratio Initial:</label>
+        <input type="text" id="initial_ratio">
+
+        <label for="terminal">Terminal:</label>
+        <input type="text" id="terminal">
+
+        <label for="compteur">Compteur:</label>
+        <input type="text" id="compteur">
+
+        <button onclick="calculateResult()">Calculer</button>
+
+        <div id="result">RESULTAT: </div>
+
+        <script>
+            function calculateResult() {
+                var initialRatio = parseFloat(document.getElementById('initial_ratio').value);
+                var terminal = parseFloat(document.getElementById('terminal').value);
+                var compteur = parseFloat(document.getElementById('compteur').value);
+
+                var resultLabel = document.getElementById('result');
+
+                if (!isNaN(initialRatio) && !isNaN(terminal) && !isNaN(compteur)) {
+                    var result = (initialRatio * terminal) / compteur;
+                    resultLabel.textContent = "RESULTAT: " + result.toFixed(2);
+                    resultLabel.style.color = 'white';
+                } else {
+                    resultLabel.textContent = "Invalid input. Please enter numeric values.";
+                    resultLabel.style.color = 'red';
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
